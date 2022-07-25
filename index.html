@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deforming Radiance Fields with Cages.">
+  <meta name="keywords" content="Deforming Radiance Field, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deforming Radiance Fields with Cages</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Deforming Radiance Fields with Cages</h1>
+          <h2 class="title is-3 publication-title">ECCV 2022</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://xth430.github.io/">Tianhan Xu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.mi.t.u-tokyo.ac.jp/harada/">Tatsuya Harada</a><sup>1, 2</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The University of Tokyo,</span>
+            <span class="author-block"><sup>2</sup>RIKEN</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/xth430/deforming-nerf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in radiance fields enable photorealistic rendering of static or dynamic 3D scenes, 
+            but still do not support explicit deformation that is used for scene manipulation or animation. 
+          </p>
+          <p>
+            In this paper, we propose a method that enables a new type of deformation of the radiance field: free-form radiance field deformation. 
+            We use a triangular mesh that encloses the foreground object called <i>cage</i> as an interface, and by manipulating the cage vertices, 
+            our approach enables the free-form deformation of the radiance field. The core of our approach is cage-based deformation which is commonly used in mesh deformation.
+            We propose a novel formulation to extend it to the radiance field, 
+            which maps the position and the view direction of the sampling points from the deformed space to the canonical space, 
+            thus enabling the rendering of the deformed scene. 
+            The deformation results of the synthetic dataset and the real-world dataset demonstrate the effectiveness of our approach.
+          </p>
+          <p><b>TL;DR:</b> We use cage-based deformation to achieve radiance field deformation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-body">
+      <img src="static/images/deforming-teaser.png"/>
+      <h2 class="subtitle has-text-centered">
+        Method overview.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video poster="" id="nerf_lego" autoplay controls muted loop playsinline height="100%">
+            <source src="static/videos/nerf_lego.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="nerf_chair" autoplay controls muted loop playsinline height="100%">
+            <source src="static/videos/nerf_chair.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="nsvf_toad" autoplay controls muted loop playsinline height="100%">
+            <source src="static/videos/nsvf_toad.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="nsvf_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="static/videos/nsvf_robot.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="dtu_scan105" autoplay controls muted loop playsinline height="100%">
+            <source src="static/videos/dtu_scan105.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="dtu_scan83" autoplay controls muted loop playsinline height="100%">
+            <source src="static/videos/dtu_scan83.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered"> Left: original scene. Right: deformed scene.</h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2>
+
+        <!-- Cage interpolation. -->
+        <h3 class="title is-4">Cage interpolation</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can animate the scene by interpolating the original cage and the deformed cage. Use the slider here to linearly interpolate between the original scene and the deformed scene.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="static/images/interpolate/nerf_lego/start.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Original</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper-nerf-lego">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider-nerf-lego"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="static/images/interpolate/nerf_lego/end.png"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">Deformed</p>
+          </div>
+        </div>
+        <br/>
+
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="static/images/interpolate/nerf_chair/start.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Original</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper-nerf-chair">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider-nerf-chair"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="static/images/interpolate/nerf_chair/end.png"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">Deformed</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ Cage interpolation. -->
+
+        <!-- Cage movement. -->
+        <h3 class="title is-4">Cage movement</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using our cage-based approach, we can also manually create a simple cage to move the objects.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 autoplay
+                 controls
+                 muted
+                 loop
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="static/videos/lego_cage_movement.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Cage movement. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Concurrent works</h2>
+        <div class="content has-text-justified">
+          <p>
+            Please also check out <a href="https://arxiv.org/abs/2205.04978">NeRF-Editing</a>. They introduce a similar idea of mesh-based deformation for geometry editing of NeRF, which takes extracted fine mesh as an interface.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{xu2022deforming,
+    author    = {Xu, Tianhan and Harada, Tatsuya},
+    title     = {Deforming Radiance Fields with Cages},
+    booktitle = {ECCV},
+    year      = {2022},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <a href="https://www.mi.t.u-tokyo.ac.jp/en">
+        <img src="static/images/mil.gif" class="img-logo"/>
+      </a>
+      <a href="https://www.u-tokyo.ac.jp/en/index.html">
+        <img src="static/images/utokyo.png" class="img-logo"/>
+      </a>
+      <a href="https://aip.riken.jp/?lang=en">
+        <img src="static/images/riken.png" class="img-logo"/>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>This work was partially supported by JST AIP Acceleration Research JPMJCR20U3, Moonshot R&D Grant Number JPMJPS2011, 
+            CREST Grant Number JPMJCR2015, JSPS KAKENHI Grant Number JP19H01115 and Basic Research Grant (Super AI) 
+            of Institute for AI and Beyond of the University of Tokyo.</p>
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>. 
+          
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for open-sourcing this template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
