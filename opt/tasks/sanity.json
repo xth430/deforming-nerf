@@ -1,0 +1,17 @@
+{
+    "data_root": "/home/sxyu/data/nerf_synthetic/ship",
+    "train_root": "/home/sxyu/proj/svox2/opt/ckpt_tune/ship_sweep",
+    "variables": {
+        "lr_sh_final": "loglin(5e-7, 5e-2, 10)",
+        "lr_sigma": "loglin(5e0, 2e2, 4)",
+        "lr_sigma_delay_steps": [25000, 40000, 55000]
+    },
+    "tasks": [{
+        "train_dir": "lrcf{lr_sh_final}_lrs{lr_sigma}_del{lr_sigma_delay_steps}",
+        "flags": [
+            "--lr_sh_final", "{lr_sh_final}",
+            "--lr_sigma", "{lr_sigma}",
+            "--lr_sigma_delay_steps", "{lr_sigma_delay_steps}"
+        ]
+    }]
+}
