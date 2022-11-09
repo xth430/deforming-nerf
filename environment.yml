@@ -23,6 +23,7 @@ dependencies:
       - matplotlib
       - scipy>=1.6.0
       - pyrender
+      - Rtree
   - pytorch
   - torchvision
   - cudatoolkit

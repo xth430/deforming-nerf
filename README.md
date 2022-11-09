@@ -1,6 +1,11 @@
+**Update:**
+- `11/10/2022` We added a [manual](MANUAL.md) for training, mesh/cage generation and deformation, etc.
+
 # Deforming Radiance Fields with Cages (ECCV 2022)
 
-<img src="teaser.gif" width="75%">
+<img src="teaser.gif" width="100%">
+
+[Project page](https://xth430.github.io/deforming-nerf/) | [Paper](https://arxiv.org/abs/2207.12298) | [Video](https://youtu.be/apE1q-_iQmQ)
 
 ## Setup
 Create a conda environment:
@@ -49,6 +54,13 @@ python render_imgs_deform.py ckpt/nerf_lego/ckpt.npz ../data/nerf_synthetic/lego
 ```
 
 Note that you need to specify the config file according to the data format (i.e., `syn.json`, `syn_nsvf.json` or `dtu.json`)
+
+## Custom datasets and cages
+Please see [MANUAL.md](MANUAL.md) for some tips about:
+- Optimizing Plenoxel model from scratch
+- Extracting mesh from optimized Plenoxel model
+- Generating cage from mesh
+- Cage deformation
 
 ## Citation
 If you find our work useful in your research, please consider citing:
